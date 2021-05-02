@@ -87,22 +87,19 @@ class _ApplyForJobsState extends State<ApplyForJobs> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AppliedJobs()));
               }),
-           PopupMenuButton<String>(
-            onSelected: (value){
-              if(value=="Logout")
-              {
-                 AuthService().signOut();
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Authenticate()));
-              }
-              else if(value=="Edit profile")
-              {
-                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => EditProfile(true)));
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == "Logout") {
+                AuthService().signOut();
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Authenticate()));
+              } else if (value == "Edit profile") {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => EditProfile(true)));
               }
             },
             itemBuilder: (BuildContext context) {
-              return {"Edit profile",'Logout'}.map((String choice) {
+              return {"Edit profile", 'Logout'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -113,10 +110,9 @@ class _ApplyForJobsState extends State<ApplyForJobs> {
         ],
       ),
       body: getJobList(),
-      floatingActionButton: FloatingActionButton(child:Icon(Icons.search,size: 40,) ,onPressed: (){Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Search()));},),
+      // floatingActionButton: FloatingActionButton(child:Icon(Icons.search,size: 40,) ,onPressed: (){Navigator.push(context,
+      //             MaterialPageRoute(builder: (context) => Search()));},),
     );
-    
   }
 
   GestureDetector applyingJobCards(
